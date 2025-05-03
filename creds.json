@@ -1,0 +1,9 @@
+{
+  "account": "",
+  "user": "",
+  "password": "",
+  "role": "ACCOUNTADMIN",
+  "warehouse": "HOL_WH",
+  "database": "KIDNEY_DB",
+  "schema": "PUBLIC"
+}
