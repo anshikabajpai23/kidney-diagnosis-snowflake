@@ -19,7 +19,7 @@ This project demonstrates how to use the UCI Chronic Kidney Disease dataset to b
 ├── streamlit_app/
 │   └── app_kidney.py           # Streamlit UI
 ├── preprocessing/
-│   └── preprocess.py           # Feature engineering and cleaning
+│   └── preprocess.ipynb           # Feature engineering and cleaning
 ├── snowflake_integration/
-│   └── load_to_snowflake.py    # Uploading to Snowflake using Snowpark
+│   └── load_to_snowflake.ipynb    # Uploading to Snowflake using Snowpark
 └── README.md
