@@ -39,7 +39,7 @@ This project demonstrates how to use the UCI Chronic Kidney Disease dataset to b
 
 ## 🧠 ML Overview
 
-- **Models**: Random Forest, XGBoost, Logistic Regression (customizable)
+- **Models**: Random Forest, Logistic Regression, KNN (customizable)
 - **Preprocessing**: Missing value imputation, label encoding, feature scaling
 - **Output**: Cleaned train/test datasets for modeling and Snowflake loading
 
