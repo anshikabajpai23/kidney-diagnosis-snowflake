@@ -50,7 +50,7 @@ This project demonstrates how to use the UCI Chronic Kidney Disease dataset to b
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/your-username/kidney-diagnosis-snowflake.git
+   git clone [https://github.com/your-username/kidney-diagnosis-snowflake.git](https://github.com/anshikabajpai23/kidney-diagnosis-snowflake.git)
    cd kidney-diagnosis-snowflake
    ```
 
