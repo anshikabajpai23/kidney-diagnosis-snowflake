@@ -5,5 +5,6 @@
   "role": "ACCOUNTADMIN",
   "warehouse": "HOL_WH",
   "database": "KIDNEY_DB",
-  "schema": "PUBLIC"
+  "schema": "PUBLIC",
+  "insecure_mode": true
 }
