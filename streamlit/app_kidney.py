@@ -58,7 +58,8 @@ def score (session, table_orig, model_name, target_table, cwh, cwh_size, size_wh
     full_name  = table_orig 
     short_name = table_orig.split('.')[-1]   # => "DEFAULT"
     session.call('sf_score', full_name, target_table, '@models', model_name)
-
+    # st.write(short_name)
+    # session.call('sf_score', "MYTESTDATA", "REST" , '@models', "Logistic_Regression_401")
 
  
     cmd = "alter warehouse " + cwh + " set warehouse_size = '" + cwh_size + "'"
@@ -107,10 +108,13 @@ st.set_page_config(page_title="KD Classification",page_icon="❄️")
 
 # Add header and a subheader
 st.header("Early Kidney Disease Detection")
+st.header("Early Kidney Disease Detection")
 
 session = create_session_object()
 
 with st.sidebar:
+    option = option_menu("", ["Data", "Analyze Data", "Data Visualization","Training", "Models and Inference","Prediction / Scoring"
+                                                             ],
     option = option_menu("", ["Data", "Analyze Data", "Data Visualization","Training", "Models and Inference","Prediction / Scoring"
                                                              ],
                             icons=['upload','graph-up', 'play-circle','list-task', 'boxes', 'speedometer2'],
@@ -139,6 +143,7 @@ if option == "Data":
             st.markdown("### 🔍 Select File")
             list_files = []
             files_available = session.sql("ls @load_data").collect()
+            
             
             for f in files_available:
                 list_files.append(f["name"])
@@ -608,6 +613,28 @@ elif option == "Prediction / Scoring":
                     .replace("'", "")
                 )
 
+                cmd = "show warehouses like '" + cwh + "'"
+                cwh_size = session.sql(cmd).collect()
+                cwh_size = cwh_size[0]["size"]
+
+                if st.button("Score Table", type="primary", use_container_width=True):
+                    with st.spinner("Scoring table..."):
+                        try:
+                            score(
+                                session,
+                                table_full,
+                                model_selected,
+                                target_table,
+                                cwh,
+                                cwh_size,
+                                size_wh="LARGE",
+                            )
+                            st.success(f"✅ Scoring completed! Output table: `{target_table}`")
+                        except Exception as e:
+                            st.error(f"⚠️ Error during scoring: {e}")
+
+    st.markdown("---")
+    st.caption("Tip: You can use Snowflake stored procedures like `sf_score` or `sf_predict_manual` to execute model predictions.")
                 cmd = "show warehouses like '" + cwh + "'"
                 cwh_size = session.sql(cmd).collect()
                 cwh_size = cwh_size[0]["size"]
